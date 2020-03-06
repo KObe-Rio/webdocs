@@ -2,7 +2,7 @@
 ![Signup Screenshot](signupform.png?raw=true "Signup Screenshot")
 
 # API (for Karl)
-There are four routes for signups that need to be implemented. All responses and requests will be JSON. 400-499 statuses are considered errors and should contain a descriptive message.
+There are three routes for signups that need to be implemented. All responses and requests will be JSON. 400-499 statuses are considered errors and should contain a descriptive message.
 
 ### Active Forms 
 `GET /activeforms`
