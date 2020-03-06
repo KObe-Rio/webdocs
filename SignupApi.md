@@ -3,17 +3,24 @@ There are four routes for signups that need to be implemented. All responses and
 
 ### Active Forms 
 `GET /activeforms`
+
 The first request in an app's session. Requests the signup form(s) active at the time. The server should respond with an array with all forms currently available for members to complete. A form should contain the following:
 ##### The Form Object
 `title` (required, string) - a user friendly title to be displayed at the top of the form
+
 `id` (required, string) - a unique identifier for the form
+
 `closes` (required, number) - epoch timestamp for when the form closes, in seconds
+
 `options` (required, array) - an array of options (of the below format) given to the user. Right now, only one can be selected at once
 
 ##### The Options Object
 `id` (required, string) - a unique identifier for the option
+
 `text` (required, string) - the text to display to the user
+
 `limit` (optional, number) - the number of spots available
+
 `occupied` (optional, number) - the number of spots occupied already
 
 ##### Example 
@@ -57,7 +64,10 @@ res.send({
 
 ### Has Signed Up
 `POST /hassignedup`
+
 The seconds request made in an app's session. Checks which option a user has already signed up for. Request body sends the user's email and form Id in the format: `{email: 'abc@123.com', formId: '239487sd98fh'}`
+
+
 Response should return the option the user previously signed up for, or `null` if the user hasn't signed up yet. The response should be of the format:
 ```
 // if already signed up
@@ -73,6 +83,7 @@ res.send({
 
 ### Submit Signup
 `POST /submitsignup`
+
 When the user submits their response to a form, they wil issue a POST request to /submitsignup, with the request body containing the user's email, the form Id, the option Id, and the previous option Id just in case their previous response needs to be removed from the record. The previous option id will be null if there was no previous option selected. The request body should be of the format below.
 ##### Example Request
 ```
